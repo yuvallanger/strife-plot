@@ -2,7 +2,7 @@ In https://github.com/yuvallanger/strife-notebook/blob/493bd83e2cec2d338fa73780d
 
 In Avigdor's article:
 
-This divergence seems to be under strong selection, as implied by the functional divergence and is also corroborated by rapid sequence divergence [8] [9], the signatures of diversifying selection [10] [11], and the spread of divergent QS systems through horizontal gene transfer [3] [12].
+This divergence seems to be under strong selection, as implied by the functional divergence and is also corroborated by rapid sequence divergence [8][] [9][], the signatures of diversifying selection [10][] [11][], and the spread of divergent QS systems through horizontal gene transfer [3][] [12][].
 
 [3]: <http://www.ncbi.nlm.nih.gov/pubmed/11133937> "Whatmore AM, Barcus VA, Dowson CG. Genetic diversity of the streptococcal competence (com) gene locus. J Bacteriol. 1999;181:3144–3154."
 [8]: <http://www.ncbi.nlm.nih.gov/pubmed/10322016> "Tortosa P, et al. Specificity and genetic polymorphism of the Bacillus competence quorum-sensing system. J Bacteriol. 2001;183:451–460."
