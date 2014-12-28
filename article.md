@@ -23,6 +23,10 @@ that explains how such diversity forms introduces an evolutionary ratchet
 in which the order of divergence in QS signal or receptor matters.
 (Avigdor Eldar et el., 2011)
 
-
-[Game of Strife]:https://gitlab.com/yuvallanger/strife-golang
-[IPython Notebook Viewer]:http://nbviewer.ipython.org/urls/gitlab.com/yuvallanger/strife-notebook/raw/master/strife.ipynb
+The approach used by Eldar et el. to investigate the interactions between
+strains was to create a set of differential equations, analyzing them
+algebrically (???) and numerically, disregarding spatial effects.
+Cellular automata simulations were used to investigate social interactions
+in bacteria (Czaran et el. 2009), in which a lattice of abstract cells
+compete with their immediate neighbors according to the state of their
+surrounding, thus mimicking a kind of biofilm.
