@@ -1,5 +1,5 @@
-A spatial model of evolutionary divergence of quorum sensing
-============================================================
+A stochastic cellular automaton model of evolutionary divergence of quorum sensing
+==================================================================================
 
 Tel-Aviv University  
 The George S. Wise Faculty of Life Sciences  
