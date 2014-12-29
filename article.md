@@ -39,7 +39,10 @@ The model used had only one dialect of quorum sensing, examining the existance
 or loss of signal, receptor or public goods. Leaving the effects of
 multi-lingual quorum sensing systems. (Czaran et el. 2009).
 
-I've used a combination of Czaran's stochastic cellular automaton
-and Eldar's theoretical model of divergent dialects.
+Methods
+-------
+
+I've used a combination of Eldar's theoretical model of divergent dialects
+and Czaran's stochastic cellular automaton. The simulation consists of a toroid board. Each cell has two QS related loci, one loci for the receptor and another for the signal. There are two possible receptor alleles and two possible signal alleles.
 
 [Image: overview of the Avigdorian model]
