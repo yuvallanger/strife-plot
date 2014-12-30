@@ -47,8 +47,13 @@ Methods
 -------
 
 I've used a combination of Eldar's theoretical model of divergent dialects
-and Czaran's stochastic cellular automaton. The simulation consists of a toroid board.
-Each cell has two QS related loci, one loci for the receptor and another for the signal.
-There are two possible receptor alleles and two possible signal alleles.
+and Czaran's stochastic cellular automaton. The simulation consists of a toroid board for which both the width and the height are equal to N.
+Each cell has two QS related loci, one loci for the receptor and
+another for the signal.
+There are two possible receptor alleles, R_{1} and R_{2} and two possible
+signal alleles, S_{1} and S_{2}.
+The each generation of the simulation follows two stages:
+A competition stage and a diffusion stage.
+Within the competition stage, a cell is drawn out of the whole board and
 
 [Image: overview of the Avigdorian model]
