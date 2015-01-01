@@ -1,6 +1,8 @@
 A stochastic cellular automaton model of evolutionary divergence of quorum sensing
 ==================================================================================
 
+**A work in progress**
+
 Tel-Aviv University  
 The George S. Wise Faculty of Life Sciences  
 Department of Microbiology [?]
