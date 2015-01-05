@@ -3,9 +3,9 @@ A stochastic cellular automaton model of evolutionary divergence of quorum sensi
 
 **A work in progress**
 
-Tel-Aviv University  
+Department of Molecular Microbiology and Biotechnology  
 The George S. Wise Faculty of Life Sciences  
-Department of Microbiology [?]
+Tel-Aviv University
 
 Yuval Langer  
 Dr. Avigdor Eldar
