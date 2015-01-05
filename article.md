@@ -13,15 +13,22 @@ Dr. Avigdor Eldar
 Introduction
 ------------
 
-[the lingua franca of quorum sensing]
 Quorum sensing is the ability of bacteria to sense their own concentration.
 When in small numbers, quorum sensing receptors are not activated, but when
 a critical threshold is achieved, these receptors cause production of
-"public goods" [what is public goods?] that are only beneficial when produced in unison.
+"public goods", extracellular products, e.g. surfactants which add motility,
+scavenging materials such as siderophores, hydrolases that tear down
+otherwise unreachable [weird wording] nutritious polymers,
+which benefit each bacteria only when large enough numbers of neighboring
+bacteria produce them as well.
+
+[//]: # (What about the lingua franca of quorum sensing?)
+
 "Multiple bacterial species show intraspecific
 divergence of their QS systems, where signals from one strain can
 activate their own receptor but fail to activate and sometimes inhibit
 a receptor from a different strain (2–7)."
+
 In gram positive bacteria, evolutionary close species
 [what's evolutionary close? check avigdor's references] exhibit
 high diversity of their quorum sensing machinery. "This divergence
@@ -29,7 +36,9 @@ seems to be under strong selection, as implied by the functional
 divergence and is also corroborated by rapid sequence divergence
 (8–9), the signatures of diversifying selection (10–11), and the
 spread of divergent QS systems through horizontal gene transfer
-(3, 12)." A proprosed model
+(3, 12)."
+
+A proprosed model
 that explains how such diversity forms introduces an evolutionary ratchet
 in which the order of divergence in QS signal or receptor matters.
 The approach used by Eldar et el. to investigate the interactions between
