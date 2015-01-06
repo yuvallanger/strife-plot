@@ -13,13 +13,15 @@ Dr. Avigdor Eldar
 Introduction
 ------------
 
-Quorum sensing is the ability of bacteria to sense their own concentration.
-When in small numbers, quorum sensing receptors are not activated, but when
+Quorum sensing (QS) is the ability of bacteria to sense their own concentration.
+A QS system is made of a signal and a signal specific receptor which regulates the expression of QS sensitive genes.
+Each bacteria continuously produce the QS chemical signal and export it outside the cell.
+When enough bacteria produce enough signal and the receptor’s threshold is reached, various genes critical to 
 a critical threshold is achieved, these receptors cause production of
 "public goods", extracellular products, e.g. surfactants which add motility,
 scavenging materials such as siderophores, hydrolases that tear down
 otherwise unreachable [weird wording] nutritious polymers,
-which benefit each bacteria only when large enough numbers of neighboring
+which benefit each bacteria only when large enough numbers of neighboing
 bacteria produce them as well.
 
 [//]: # (What about the lingua franca of quorum sensing?)
