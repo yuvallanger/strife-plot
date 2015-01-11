@@ -78,10 +78,13 @@ of toroidal lattice topology. Each of the 300x300 grid-points of the
 square lattice represent a site for a single bacterium; all the sites
 are always occupied, i.e., bacteria may replace each other, but
 may not leave empty sites. The inhabitants of the sites may differ
-at 2 genetic loci: locus S for signal of specific pherotype (S_{1} or S_{2}), and locus R for receptor of specific pherotype (R_{1} or R_{2}) 
-which includes the signal receptor and the signal transduction machinery 
-that triggers the cooperative behaviour when the critical signal 
-concentration has been reached. Each of these loci can harbour either an allele of one pherotype denoted by subscript 1 (S_{1}, R_{1}), or of another pherotype denoted by subscript 2 (S_{2}, R_{2}). Thus the
+at 2 genetic loci: locus S for signal of specific pherotype (S_{1} or S_{2}),
+and locus R for receptor of specific pherotype (R_{1} or R_{2})
+which includes the signal receptor and the signal transduction machinery
+that triggers the cooperative behaviour when the critical signal
+concentration has been reached. Each of these loci can harbour either
+an allele of one pherotype denoted by subscript 1 (S_{1}, R_{1}),
+or of another pherotype denoted by subscript 2 (S_{2}, R_{2}). Thus the
 bacteria can have 2^2 = 4 different genotypes.
 Fitness effects of cooperation: The product of the cooperating
 is supposed to be an excreted ‘public good’ molecule such as
