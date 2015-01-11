@@ -47,7 +47,7 @@ but disregards spatial effects. (Eldar et el., 2011)
 Stochastic cellular automata simulations were used to investigate social
 interactions in bacteria, in which a lattice of abstract cells
 compete with their immediate neighbours according to the state of their
-microenvironment, thus mimicking a kind of biofilm. [?]
+microenvironment, thus mimicking a kind of limited infinite island model. [?]
 The model used had only one pherotype [is it the QS system as a whole or the signal itself?] of quorum sensing, examining the existence
 or loss of signal, receptor or public goods genes, while leaving the effects of
 multi-lingual quorum sensing systems. (Czaran et el. 2009).
