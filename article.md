@@ -87,49 +87,37 @@ single bacterium;
 all the sites are always occupied, i.e., bacteria may replace each other, but
 may not leave empty sites.
 The inhabitants of the sites may differ at 2 genetic loci: locus S for signal
-of specific pherotype (S_{1} or S_{2}), and locus R for receptor of specific
-pherotype (R_{1} or R_{2}) which includes the signal receptor and the signal
+of specific pherotype ($S_{1}$ or $S_{2}$), and locus R for receptor of specific
+pherotype ($R_{1}$ or $R_{2}$) which includes the signal receptor and the signal
 transduction machinery that triggers the cooperative behaviour when the
 critical signal concentration has been reached.
 Each of these loci can harbour either an allele of one pherotype denoted by
-subscript 1 (S_{1}, R_{1}), or of another pherotype denoted by subscript 2
-(S_{2}, R_{2}).
-Thus the bacteria can have 2^2 = 4 different genotypes.
+subscript 1 ($S_{1}$, $R_{1}$), or of another pherotype denoted by subscript 2
+($S_{2}$, $R_{2}$).
+Thus the bacteria can have $2^{2}=4$ different genotypes.
+
+
+Variable name | Description
+:--------------|:-----------
+CooperationEffectThreshold | Minimal number of cells that produce public goods in the Moore neighbourhood of a cell for the cell to benefit from those public goods
+SignalThreshold | Minimal number of cells in the Moore neighbourhood of a cell that produce a compatible signal pherotype to the cell's receptor for it to produce public goods
+BoardSize | The number of columns the grid has (equal to the number of rows)
+CooperationCost | The metabolic cost of producing the public goods
+PublicGoodsEffect | The metabolic benefit of the public goods
+MutOddsS | Probability of mutation in the S locus per competition
+MutOddsR | Probability of mutation in the R locus per competition
+BasalCost | The metabolic cost each of the cells pays
+D | Diffusion rate
+Generations | Number of generations for each simulation
+SignalCost | Cost of signal production
+ReceptorCost | Cost of receptor production
+PublicGoodsEffect | 0.6
+
+Table: Parameters used in the simulation
 
 ### Fitness effects of cooperation
 
 
-### Parameters used in the simulation
-
-------------------------------------------------
-| Variable name | Description | Czaran variable |
-=================================================
-|  CooperationEffectThreshold | Minimal number of cells that produce public goods in the Moore neighbourhood of a cell for the cell to benefit from those public goods | `n_{q}` |
----------------------------------------------
-| SignalThreshold | Minimal number of cells in the Moore neighbourhood of a cell that produce a compatible signal pherotype to the cell's receptor for it to produce public goods | `n_{e}` |
----------------------------------------------
-| BoardSize | The number of columns the grid has (equal to the number of rows) | `N` |
----------------------------------------------
-| CooperationCost | The metabolic cost of producing the public goods | `m_{C}` |
----------------------------------------------
-| PublicGoodsEffect | The metabolic benefit of the public goods | `r`
----------------------------------------------
-| MutOddsS | Probability of mutation in the S locus per competition | `\mu_{s}` |
----------------------------------------------
-| MutOddsR | Probability of mutation in the R locus per competition | `\mu_{r}` |
----------------------------------------------
-| BasalCost | The metabolic cost each of the cells pays | `M_{0}` |
----------------------------------------------
-| D | Diffusion rate | `D` |
----------------------------------------------
-| Generations | BoardSize^2 |
----------------------------------------------
-| SignalCost | Cost of signal production | 3 |
----------------------------------------------
-| ReceptorCost | Cost of receptor production | 1 |
----------------------------------------------
-| PublicGoodsEffect | 0.6
----------------------------------------------
 
 The product of the cooperating is supposed to be an excreted ‘public good’
 molecule such as an exo-enzyme for extracellular food digestion.
@@ -148,94 +136,76 @@ the production of the public good. That is, cooperation carries an inevitable fi
 benefit. Of course for cooperation to be feasible at all the
 benefit has to outweigh the cost.
 
-Fitness effects of quorum sensing
-Cells carrying genotype S_{1} produce the S_{1} pherotype molecule,
-whereas R_{1} genotypes will respond to a sufficient amount of S_{1} 
-signal in their immediate environment.
-
 ### Selection
-Individuals compete for sites. Competition is played out
-between randomly chosen pairs of neighbouring cells, on the
-basis of their fitness:
 
-Fitness = BasalCost/((CooperationCost + SignalCost + ReceptorCost)*(1 - PublicGoodsEffect))
+Individuals compete for sites.
+Competition is played out between randomly chosen pairs of neighbouring cells,
+on the basis of their fitness:
 
-TODO
+$Fitness = BasalCost/((CooperationCost + SignalCost + ReceptorCost)*(1 - PublicGoodsEffect))$
 
-If the cell produces public goods, CooperationCost will be included:
-only be included if the cell produces public goods.
-PublicGoodsEffect will be equal to zero in the case of insufficient public goods.
-PublicGoodsEffect will be equal to the 
+If the cell produces public goods, $CooperationCost$ will be equal to 1,
+otherwise it’ll be equal to the cost of producing public goods.
+If there are a sufficient number of cooperators around the cell,
+$PublicGoodsEffect$ will equal the public goods effect, from 0 to 1, where
+bigger is better for the competitor, otherwise $PublicGoodsEffect$ will be 0.
 
-Each of the competitor's Fitness is multiplied by a different uniform random number [0, 1) and the result is compared.
+Each of the competitor's Fitness is multiplied by a different uniform random
+number between 0 and 1, and the result is compared.
 The cell with the higher result is the winner of the competition.
-If both cells are of the same strain, one of the cells goes through the mutation stage, as a competition is meaningless.
+If both cells are of the same strain, the competition stage is redundant and
+only one of the selected cells will go through the mutation stage.
 
 ### Mutations
-During the takeover of a site by the winner of the competition
-the invading cell, i.e., the copy of the winner occupying the site of
-the loser, can change any of its 2 alleles from
-pherotype 1 to 2 or vice versa. We call these allele changes
-‘‘mutations’’, but in fact they can be due to either mutation or
-some other process like transformation or even the immigration of
-individuals carrying the ‘‘mutant’’ allele. [??]
-The point in allowing
-allele changes both ways is to maintain
-the presence of all different genes in the
-population so that the system doesn’t get stuck in any particular
-genetic state because of the lack of alternative alleles. Thus, each of
-the possible allele changes may have a positive probability.
-Mutations are independent at the two loci – e.g., the quorum
-signal gene S can be mutated without changing the response module R at
-the same time.
+
+During the takeover of a site by the winner of the competition the invading
+cell, i.e., the copy of the winner occupying the site of the loser, can change
+any of its 2 alleles from pherotype 1 to 2 or vice versa.
+The point in allowing allele changes both ways is to maintain the presence of
+all different genes in the population so that the system doesn’t get stuck in
+any particular genetic state because of the lack of alternative alleles.
+Thus, each of the possible allele changes may have a positive probability.
+Mutations are independent at the two loci – e.g., the quorum signal gene S can
+be mutated without changing the response module R at the same time.
 
 ### Diffusion
-Each competition step may be followed by a number (D) of
-diffusion steps. One diffusion step consists of the random choice of
-a site, and the 90 degree rotation of the 2x2 subgrid with the randomly
-chosen site in its upper left corner. Rotation occurs in clockwise or
-anticlockwise direction with equal probability [19]. D is the
-diffusion parameter of the model: it is proportional to the average
-number of diffusion steps taken by a cell per each competitive
-interaction it is engaged in. Larger D means faster mixing in the
-population. Since one diffusion move involves 4 cells, D= 1.0
-amounts to an expected number of 4 diffusion steps per interaction
-per cell. In the simulations we use the range 0.0#D#1.0 of the
-diffusion parameter, and occasionally much higher values
-(D= 15.0) as well.
-Initial states and output
-At t =0 the lattice is ‘‘seeded’’ either by the ‘‘Ignorant’’ (csr)
-genotype on all sites, or the initial state is a random pattern of all
-the 8 possible genotypes present at equal proportions. We simulate
-pairwise competitive interactions, mutations and diffusive movements
-for N generations. One generation consists of a number of
-competition steps equal to the number of sites in the lattice, so that
-each site is updated once per generation on average. In the
-majority of simulations we have applied mutation rates of 1024
-both ways at each locus, which is equivalent to an average of 9
-mutation events per generation within the whole habitat. The
-three functional alleles have a positive cost of expression,
-constrained by the relation mCwwmSwmR (the actual values
-used throughout the simulations are given in Table 1).
 
+Each competition step may be followed by a number $D$ of diffusion steps.
+One diffusion step consists of the random choice of a site, and the 90 degree
+rotation of the 2x2 subgrid with the randomly chosen site in its upper left
+corner.
+Rotation occurs in clockwise or anticlockwise direction with equal probability.
+$D$ is the diffusion parameter of the model:
+it is proportional to the average number of diffusion steps taken by a cell per
+each competitive interaction it is engaged in.
+Larger D means faster mixing in the population.
+Since one diffusion move involves 4 cells, $D=1.0$ amounts to an expected
+number of 4 diffusion steps per interaction per cell.
+
+### Initial states and output
+
+At $t=0$ the lattice is “seeded” by the first pherotype $S_{1}R_{1}$.
+We simulate pairwise competitive interactions, mutations and diffusive
+movements for N generations.
+One generation consists of a number of competition steps equal to the number of
+sites in the lattice, so that each site is updated once per generation on
+average.
+We have applied mutation rates of $10^{-4}$ both ways at each locus, which is
+equivalent to an average of $BoardSize*BoardSize*10^{-4}=9$ mutation events per
+generation for each locus within the whole habitat.
 
 ### Simulations
-With the initial conditions specified above we follow the
-evolution (the change in allele frequencies) for both cooperation
-and the two components of quorum sensing. We investigate the
-qualitative or quantitative effects on the evolution of cooperation
-and quorum sensing of the crucial parameters of the model: the
-fitness reward of cooperation (r), the metabolic cost of cooperation
-(mC), the intensity of diffusive mixing (D) and the quorum
-threshold (nq). The simulations have been run until the relative
-frequencies of the three focal alleles (C, S and R) approached their
-quasi-stationary values. This could be achieved within 10.000
-generations in most cases. The first few simulations have been
-repeated 3 times with each parameter setting, using different
-random number arrays, but since variation in the results was very
-small at a lattice size of 3006300 in all cases, and each run took a
-long time to finish, we stopped producing replicate runs.
-During the simulations we record and plot the time series of the
-8 different genotype frequencies, from which the frequencies of the
-three functional alleles can be calculated and plotted against time.
-Evaluation of the model outputs
+
+With the initial conditions specified above we follow the evolution (the change
+in allele frequencies) of the two loci.
+We investigate the qualitative or quantitative effects on the evolution of
+quorum sensing of the crucial parameters of the model:
+the metabolic cost of cooperation $CooperationCost$,
+the intensity of diffusive mixing $D$,
+the threshold of PG needed for the cooperation fitness effect
+$CooperationEffectThreshold$
+and the threshold of signal needed to produce public goods $SignalThreshold$.
+The simulations have been run for 2000 generations.
+During the simulations we record and plot the time series of the 4 different
+genotype frequencies, from which the frequencies of the two functional alleles
+can be calculated and plotted against time.
