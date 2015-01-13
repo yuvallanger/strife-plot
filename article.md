@@ -99,17 +99,37 @@ Thus the bacteria can have 2^2 = 4 different genotypes.
 ### Fitness effects of cooperation
 
 
-* CooperationEffectThreshold - was `q_{n}`
-* SignalThreshold - `n_{e}`
-* BoardSize - `N`
-* `m_{S}`
-* `m_{R}`
-* `m_{C}`
-* `r`
-* MutOddsS - `\mu_{s}`
-* MutOddsR - `\mu_{r}`
-* BasalCost - M
-* D - `D`
+### Parameters used in the simulation
+
+------------------------------------------------
+| Variable name | Description | Czaran variable |
+=================================================
+|  CooperationEffectThreshold | Minimal number of cells that produce public goods in the Moore neighbourhood of a cell for the cell to benefit from those public goods | `n_{q}` |
+---------------------------------------------
+| SignalThreshold | Minimal number of cells in the Moore neighbourhood of a cell that produce a compatible signal pherotype to the cell's receptor for it to produce public goods | `n_{e}` |
+---------------------------------------------
+| BoardSize | The number of columns the grid has (equal to the number of rows) | `N` |
+---------------------------------------------
+| CooperationCost | The metabolic cost of producing the public goods | `m_{C}` |
+---------------------------------------------
+| PublicGoodsEffect | The metabolic benefit of the public goods | `r`
+---------------------------------------------
+| MutOddsS | Probability of mutation in the S locus per competition | `\mu_{s}` |
+---------------------------------------------
+| MutOddsR | Probability of mutation in the R locus per competition | `\mu_{r}` |
+---------------------------------------------
+| BasalCost | The metabolic cost each of the cells pays | `M_{0}` |
+---------------------------------------------
+| D | Diffusion rate | `D` |
+---------------------------------------------
+| Generations | BoardSize^2 |
+---------------------------------------------
+| SignalCost | Cost of signal production | 3 |
+---------------------------------------------
+| ReceptorCost | Cost of receptor production | 1 |
+---------------------------------------------
+| PublicGoodsEffect | 0.6
+---------------------------------------------
 
 The product of the cooperating is supposed to be an excreted ‘public good’
 molecule such as an exo-enzyme for extracellular food digestion.
@@ -133,71 +153,46 @@ Cells carrying genotype S_{1} produce the S_{1} pherotype molecule,
 whereas R_{1} genotypes will respond to a sufficient amount of S_{1} 
 signal in their immediate environment.
 
-The fitness benefit of a QS system is an indirect one:
-communication using a signalling system may spare unnecessary costs of 
-futile attempts to cooperate whenever the
-local density of potential cooperators is lower than the quorum nq.
-For this communication benefit to be feasible, the QS machinery
-altogether has to be much cheaper (in terms of metabolic costs)
-than cooperation itself, otherwise constitutive (unconditional and
-permanent) cooperation would be a better option for the
-bacterium, and resources invested into QS would be wasted.
-Thus the ordering of the metabolic fitness costs of cooperation and
-QS are assumed to be mCwwmS§mR. The inactive alleles c, s
-and r carry no metabolic cost: mc~ms~mr~0:
-The effect of the quorum sensing genes on the
-cooperation gene
-The quorum signal is supposed to be the regulator of
-cooperation: bacteria with a C.R genome (i.e., those carrying a
-functional cooperation allele C and a working response module R)
-will actually express the C gene (i.e., cooperate) only if there is a
-sufficient quorum nq of signallers (.S. individuals) within their
-neighbourhood. That is, C.R cells wait for a number of
-‘‘promises’’ of cooperation in their 3x3-cell neighbourhood before
-they switch to cooperating mode (produce the public good)
-themselves. C.r genotypes do not have a functioning response
-module, therefore they produce the public good constitutively.
-Selection
+### Selection
 Individuals compete for sites. Competition is played out
 between randomly chosen pairs of neighbouring cells, on the
-basis of the actual net metabolic burdens M(1) and M(2) they
-carry. The net metabolic burden M(i) of an individual i is
-calculated as the sum of the basic metabolic load M0 carried by all
-individuals and the total metabolic cost me(i) of the actual gene
-expressions at the three loci concerned (see Table 1), multiplied by
-the unit complement of the cooperation reward parameter (1 – r) if
-it is surrounded by a sufficient quorum of cooperators:
-MðiÞ~½M0zmeðiÞ if # of cooperators in neighborhood
-is below the quorum threshold nq
-MðiÞ~½M0zmeðiÞð1{rÞ otherwise ð0vrv1Þ
-Thus, successful cooperation reduces the total metabolic burden
-in a multiplicative fashion. The relative fitness of individual i is
-defined as its net metabolic burden relative to the basic metabolic
-load as M0=MðiÞ. In practice, the outcome of competition is
-determined by a random draw, with chances of winning weighted
-in proportion to the relative fitnesses. The winner takes the site of
-the loser, replacing it by a copy of itself.
-Mutations
+basis of their fitness:
+
+Fitness = BasalCost/((CooperationCost + SignalCost + ReceptorCost)*(1 - PublicGoodsEffect))
+
+TODO
+
+If the cell produces public goods, CooperationCost will be included:
+only be included if the cell produces public goods.
+PublicGoodsEffect will be equal to zero in the case of insufficient public goods.
+PublicGoodsEffect will be equal to the 
+
+Each of the competitor's Fitness is multiplied by a different uniform random number [0, 1) and the result is compared.
+The cell with the higher result is the winner of the competition.
+If both cells are of the same strain, one of the cells goes through the mutation stage, as a competition is meaningless.
+
+### Mutations
 During the takeover of a site by the winner of the competition
 the invading cell, i.e., the copy of the winner occupying the site of
-the loser, can change one of its 3 alleles (chosen at random) from
-functional to inactive or vice versa. We call these allele changes
+the loser, can change any of its 2 alleles from
+pherotype 1 to 2 or vice versa. We call these allele changes
 ‘‘mutations’’, but in fact they can be due to either mutation or
 some other process like transformation or even the immigration of
-individuals carrying the ‘‘mutant’’ allele. The point in allowing
-allele changes both ways (losing and obtaining them) is to maintain
-the presence of all six different genes (C, c, S, s, R, r) in the
+individuals carrying the ‘‘mutant’’ allele. [??]
+The point in allowing
+allele changes both ways is to maintain
+the presence of all different genes in the
 population so that the system doesn’t get stuck in any particular
 genetic state because of the lack of alternative alleles. Thus, each of
-the six possible allele changes may have a positive probability.
-Mutations are independent at the three loci – e.g., the quorum
-signal gene S can be lost without losing the response module R at
-the same time; the resulting mutant will be ‘‘mute’’ yet still able to
-respond to quorum signals.
-Diffusion
+the possible allele changes may have a positive probability.
+Mutations are independent at the two loci – e.g., the quorum
+signal gene S can be mutated without changing the response module R at
+the same time.
+
+### Diffusion
 Each competition step may be followed by a number (D) of
 diffusion steps. One diffusion step consists of the random choice of
-a site, and the 90u rotation of the 262 subgrid with the randomly
+a site, and the 90 degree rotation of the 2x2 subgrid with the randomly
 chosen site in its upper left corner. Rotation occurs in clockwise or
 anticlockwise direction with equal probability [19]. D is the
 diffusion parameter of the model: it is proportional to the average
@@ -222,7 +217,9 @@ mutation events per generation within the whole habitat. The
 three functional alleles have a positive cost of expression,
 constrained by the relation mCwwmSwmR (the actual values
 used throughout the simulations are given in Table 1).
-Simulations
+
+
+### Simulations
 With the initial conditions specified above we follow the
 evolution (the change in allele frequencies) for both cooperation
 and the two components of quorum sensing. We investigate the
@@ -231,8 +228,6 @@ and quorum sensing of the crucial parameters of the model: the
 fitness reward of cooperation (r), the metabolic cost of cooperation
 (mC), the intensity of diffusive mixing (D) and the quorum
 threshold (nq). The simulations have been run until the relative
-Cooperation and Cheating
-PLoS ONE | www.plosone.org 3 August 2009 | Volume 4 | Issue 8 | e6655
 frequencies of the three focal alleles (C, S and R) approached their
 quasi-stationary values. This could be achieved within 10.000
 generations in most cases. The first few simulations have been
@@ -244,15 +239,3 @@ During the simulations we record and plot the time series of the
 8 different genotype frequencies, from which the frequencies of the
 three functional alleles can be calculated and plotted against time.
 Evaluation of the model outputs
-The simulation results are recorded as 10.000-generation time
-series of genotype frequencies and spatial patterns of the
-genotypes. With regard to allele frequencies we asked the following
-question: are the genes for cooperation (C) and quorum sensing (S
-and R) selected for beyond their respective mutation-selection
-equilibria based on the metabolic selection coefficients sC = (MC
-2M0)/MC, sS = (MS 2M0)/MS and sR = (MR 2M0)/MR and the
-(uniform) mutation rate m ? For example, relative frequencies of
-the cooperating allele above its mutation-selection equilibrium
-^qC~m=ðsCzmÞ indicate a net fitness benefit of cooperation and
-thus positive selection for the C allele. ^qS and ^qR can be
-calculated the same way.
