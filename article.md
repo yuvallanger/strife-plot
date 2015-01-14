@@ -111,7 +111,7 @@ D | Diffusion rate
 Generations | Number of generations for each simulation
 SignalCost | Cost of signal production
 ReceptorCost | Cost of receptor production
-PublicGoodsEffect | 0.6
+PublicGoodsEffect | The fitness benefit achieved by sufficient public goods
 
 Table: Parameters used in the simulation
 
@@ -122,7 +122,7 @@ Table: Parameters used in the simulation
 The product of the cooperating is supposed to be an excreted ‘public good’
 molecule such as an exo-enzyme for extracellular food digestion.
 It may increase the fitness of a bacterium, provided there are at least
-$CooperationEffectThreshold$ [was `q_{n}`] bacteria (possibly, but not
+$CooperationEffectThreshold$ bacteria (possibly, but not
 necessarily, including itself) expressing the public goods as well within its
 3x3-cell neighbourhood;
 $CooperationEffectThreshold$ is the quorum threshold of cooperation.
@@ -191,7 +191,7 @@ One generation consists of a number of competition steps equal to the number of
 sites in the lattice, so that each site is updated once per generation on
 average.
 We have applied mutation rates of $10^{-4}$ both ways at each locus, which is
-equivalent to an average of $BoardSize*BoardSize*10^{-4}=9$ mutation events per
+equivalent to an average of $BoardSize^{2}*10^{-4}=9$ mutation events per
 generation for each locus within the whole habitat.
 
 ### Simulations
