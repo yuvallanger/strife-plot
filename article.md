@@ -91,21 +91,21 @@ subscript 1 ($<S_{1}>$, $<R_{1}>$), or of another pherotype denoted by subscript
 Thus the bacteria can have $<2^{2}=4>$ different genotypes.
 
 
-Variable name | Description
-:--------------|:-----------
+Variable name                | Description
+:--------------------------- |:-----------
 <CooperationEffectThreshold> | Minimal number of cells that produce public goods in the Moore neighbourhood of a cell for the cell to benefit from those public goods
-<SignalThreshold> | Minimal number of cells in the Moore neighbourhood of a cell that produce a compatible signal pherotype to the cell's receptor for it to produce public goods
-<BoardSize> | The number of columns the grid has (equal to the number of rows)
-<CooperationCost> | The metabolic cost of producing the public goods
-<PublicGoodsEffect> | The metabolic benefit of the public goods
-<MutOddsS> | Probability of mutation in the S locus per competition
-<MutOddsR> | Probability of mutation in the R locus per competition
-<BasalCost> | The metabolic cost each of the cells pays
-<D> | Diffusion rate
-<Generations> | Number of generations for each simulation
-<SignalCost> | Cost of signal production
-<ReceptorCost> | Cost of receptor production
-<PublicGoodsEffect> | The fitness benefit achieved by sufficient public goods
+<SignalThreshold>            | Minimal number of cells in the Moore neighbourhood of a cell that produce a compatible signal pherotype to the cell's receptor for it to produce public goods
+<BoardSize>                  | The number of columns the grid has (equal to the number of rows)
+<CooperationCost>            | The metabolic cost of producing the public goods
+<PublicGoodsEffect>          | The metabolic benefit of the public goods
+<MutOddsS>                   | Probability of mutation in the S locus per competition
+<MutOddsR>                   | Probability of mutation in the R locus per competition
+<BasalCost>                  | The metabolic cost each of the cells pays
+<D>                          | Diffusion rate
+<Generations>                | Number of generations for each simulation
+<SignalCost>                 | Cost of signal production
+<ReceptorCost>               | Cost of receptor production
+<PublicGoodsEffect>          | The fitness benefit achieved by sufficient public goods
 
 Table: Parameters used in the simulation
 
@@ -219,23 +219,23 @@ Each colour represents a different strain: blue=S1R1, red=S1R2, orange=S2R2 and 
 
 
 $<Diffusion>$ | $<CooperationCost>$ | $<CooperationEffectThreshold>$ | $<SignalThreshold>$ | $Description$
-:----- | :----- | :--------------|:-----------|:------------
-0   | 10  | 5 | 5 | An equilibrium is reached between S1R1 and S2R2 at about generation 1200 with almost no cheating intermediate strains. At generation 270 we see the start of a persistent S2R2 population.
-0   | 10  | 1 | 6 | A case of rock-paper-scissors (RPS) appears in which the dominance of the S1R1 is replaced by S1R2, S1R2 is replaced by S2R2, S2R2 by S2R1 and back again to S1R1. After one cycle of such replacements, the dominant populations are of the cheating strains and a smaller population of the cooperators exists, while the game of RPS is kept throughout the generations.
-0   | 10  | 1 | 7 | The same as in (1,6), but after the first complete cycle of RPS the dominant populations are of the cooperating strains.
-0   | 10  | 3 | 8 | An equilibrium is quickly achieved between the original cooperator (S1R1) and its cheater (S1R2). The board snapshots show high population heterogeneity. but we can see for a few generations (380 to 570) that S2R2 invaded an S1R2 population unsuccessfully and went extinct. (The invading S2R2 population had a strong advantage over the S1R2 population, but because of the overall board's structure of many discontinuous islands, the S2R2 population did not have a way to the other S1R2 populations and died off due to its small size with !!!!)
-0   | 30  | 5 | 5 | An equilibrium between the two cooperating strains is achieved much faster. For a short duration at the first part of the simulation a population of cheaters to the original strain invades and went extinct.
-0   | 30  | 1 | 6 | The RPS cycling appears but, conrary to the simulation of the same thresholds but with $<CooperationCost>=10$, within the first complete cycle the dominance of the cheating strain pair (S1R2, S2R1) is achieved.
-0   | 30  | 1 | 7 | The same as the previous simulation.
-0   | 30  | 3 | 9 | The first cooperating population is quickly invaded by its cheater. The change of population densities seem to be leading to an equilibrium between each of the cheating and each of the cooperating strain pairs with the cheating on the upper hand.
-0.2 | !!! | 5 | 5 | An equilibrium between the two cooperating strains is achieved much faster. For a short duration at the first part of the simulation a population of cheaters to the original strain invades and went extinct.
-0.2 | !!! | 1 | 6 | The RPS cycling appears but, conrary to the simulation of the same thresholds but with $<CooperationCost>=10$, within the first complete cycle the dominance of the cheating strain pair (S1R2, S2R1) is achieved.
-0.2 | !!! | 1 | 7 | The same as the previous simulation.
-0.2 | !!! | 3 | 9 | The first cooperating population is quickly invaded by its cheater. The change of population densities seem to be leading to an equilibrium between each of the cheating and each of the cooperating strain pairs with the cheating on the upper hand.
-0.4 | !!! | 5 | 5 | An equilibrium between the two cooperating strains is achieved much faster. For a short duration at the first part of the simulation a population of cheaters to the original strain invades and went extinct.
-0.4 | !!! | 1 | 6 | The RPS cycling appears but, conrary to the simulation of the same thresholds but with $<CooperationCost>=10$, within the first complete cycle the dominance of the cheating strain pair (S1R2, S2R1) is achieved.
-0.4 | !!! | 1 | 7 | The same as the previous simulation.
-0.4 | !!! | 3 | 9 | The first cooperating population is quickly invaded by its cheater. The change of population densities seem to be leading to an equilibrium between each of the cheating and each of the cooperating strain pairs with the cheating on the upper hand.
+:------------ |:------------------- |:-----------------------------  |:------------------- |:------------
+0             | 10                  | 5                              | 5                   | An equilibrium is reached between S1R1 and S2R2 at about generation 1200 with almost no cheating intermediate strains. At generation 270 we see the start of a persistent S2R2 population.
+0             | 10                  | 1                              | 6                   | A case of rock-paper-scissors (RPS) appears in which the dominance of the S1R1 is replaced by S1R2, S1R2 is replaced by S2R2, S2R2 by S2R1 and back again to S1R1. After one cycle of such replacements, the dominant populations are of the cheating strains and a smaller population of the cooperators exists, while the game of RPS is kept throughout the generations.
+0             | 10                  | 1                              | 7                   | The same as in (1,6), but after the first complete cycle of RPS the dominant populations are of the cooperating strains.
+0             | 10                  | 3                              | 8                   | An equilibrium is quickly achieved between the original cooperator (S1R1) and its cheater (S1R2). The board snapshots show high population heterogeneity. but we can see for a few generations (380 to 570) that S2R2 invaded an S1R2 population unsuccessfully and went extinct. (The invading S2R2 population had a strong advantage over the S1R2 population, but because of the overall board's structure of many discontinuous islands, the S2R2 population did not have a way to the other S1R2 populations and died off due to its small size with !!!!)
+0             | 30                  | 5                              | 5                   | An equilibrium between the two cooperating strains is achieved much faster. For a short duration at the first part of the simulation a population of cheaters to the original strain invades and went extinct.
+0             | 30                  | 1                              | 6                   | The RPS cycling appears but, conrary to the simulation of the same thresholds but with $<CooperationCost>=10$, within the first complete cycle the dominance of the cheating strain pair (S1R2, S2R1) is achieved.
+0             | 30                  | 1                              | 7                   | The same as the previous simulation.
+0             | 30                  | 3                              | 9                   | The first cooperating population is quickly invaded by its cheater. The change of population densities seem to be leading to an equilibrium between each of the cheating and each of the cooperating strain pairs with the cheating on the upper hand.
+0.2           | !!!                 | 5                              | 5                   | An equilibrium between the two cooperating strains is achieved much faster. For a short duration at the first part of the simulation a population of cheaters to the original strain invades and went extinct.
+0.2           | !!!                 | 1                              | 6                   | The RPS cycling appears but, conrary to the simulation of the same thresholds but with $<CooperationCost>=10$, within the first complete cycle the dominance of the cheating strain pair (S1R2, S2R1) is achieved.
+0.2           | !!!                 | 1                              | 7                   | The same as the previous simulation.
+0.2           | !!!                 | 3                              | 9                   | The first cooperating population is quickly invaded by its cheater. The change of population densities seem to be leading to an equilibrium between each of the cheating and each of the cooperating strain pairs with the cheating on the upper hand.
+0.4           | !!!                 | 5                              | 5                   | An equilibrium between the two cooperating strains is achieved much faster. For a short duration at the first part of the simulation a population of cheaters to the original strain invades and went extinct.
+0.4           | !!!                 | 1                              | 6                   | The RPS cycling appears but, conrary to the simulation of the same thresholds but with $<CooperationCost>=10$, within the first complete cycle the dominance of the cheating strain pair (S1R2, S2R1) is achieved.
+0.4           | !!!                 | 1                              | 7                   | The same as the previous simulation.
+0.4           | !!!                 | 3                              | 9                   | The first cooperating population is quickly invaded by its cheater. The change of population densities seem to be leading to an equilibrium between each of the cheating and each of the cooperating strain pairs with the cheating on the upper hand.
 
 
 TODO Describe general trends within the thresholds parameter space.
