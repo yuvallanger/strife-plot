@@ -81,31 +81,31 @@ single bacterium;
 all the sites are always occupied, i.e., bacteria may replace each other, but
 may not leave empty sites.
 The inhabitants of the sites may differ at 2 genetic loci: locus S for signal
-of specific pherotype ($<S_{1}>$ or $<S_{2}>$), and locus R for receptor of specific
-pherotype ($<R_{1}>$ or $<R_{2}>$) which includes the signal receptor and the signal
+of specific pherotype ($[S_{1}]$ or $[S_{2}]$), and locus R for receptor of specific
+pherotype ($[R_{1}]$ or $[R_{2}]$) which includes the signal receptor and the signal
 transduction machinery that triggers the cooperative behaviour when the
 critical signal concentration has been reached.
 Each of these loci can harbour either an allele of one pherotype denoted by
-subscript 1 ($<S_{1}>$, $<R_{1}>$), or of another pherotype denoted by subscript 2
-($<S_{2}>$, $<R_{2}>$).
-Thus the bacteria can have $<2^{2}=4>$ different genotypes.
+subscript 1 ($[S_{1}]$, $[R_{1}]$), or of another pherotype denoted by subscript 2
+($[S_{2}]$, $[R_{2}]$).
+Thus the bacteria can have $[2^{2}=4]$ different genotypes.
 
 
 Variable name                | Description
 :--------------------------- |:-----------
-<CooperationEffectThreshold> | Minimal number of cells that produce public goods in the Moore neighbourhood of a cell for the cell to benefit from those public goods
-<SignalThreshold>            | Minimal number of cells in the Moore neighbourhood of a cell that produce a compatible signal pherotype to the cell's receptor for it to produce public goods
-<BoardSize>                  | The number of columns the grid has (equal to the number of rows)
-<CooperationCost>            | The metabolic cost of producing the public goods
-<PublicGoodsEffect>          | The metabolic benefit of the public goods
-<MutOddsS>                   | Probability of mutation in the S locus per competition
-<MutOddsR>                   | Probability of mutation in the R locus per competition
-<BasalCost>                  | The metabolic cost each of the cells pays
-<D>                          | Diffusion rate
-<Generations>                | Number of generations for each simulation
-<SignalCost>                 | Cost of signal production
-<ReceptorCost>               | Cost of receptor production
-<PublicGoodsEffect>          | The fitness benefit achieved by sufficient public goods
+[CooperationEffectThreshold] | Minimal number of cells that produce public goods in the Moore neighbourhood of a cell for the cell to benefit from those public goods
+[SignalThreshold]            | Minimal number of cells in the Moore neighbourhood of a cell that produce a compatible signal pherotype to the cell's receptor for it to produce public goods
+[BoardSize]                  | The number of columns the grid has (equal to the number of rows)
+[CooperationCost]            | The metabolic cost of producing the public goods
+[PublicGoodsEffect]          | The metabolic benefit of the public goods
+[MutOddsS]                   | Probability of mutation in the S locus per competition
+[MutOddsR]                   | Probability of mutation in the R locus per competition
+[BasalCost]                  | The metabolic cost each of the cells pays
+[D]                          | Diffusion rate
+[Generations]                | Number of generations for each simulation
+[SignalCost]                 | Cost of signal production
+[ReceptorCost]               | Cost of receptor production
+[PublicGoodsEffect]          | The fitness benefit achieved by sufficient public goods
 
 Table: Parameters used in the simulation
 
@@ -116,13 +116,13 @@ Table: Parameters used in the simulation
 The product of the cooperating is supposed to be an excreted ‘public good’
 molecule such as an exo-enzyme for extracellular food digestion.
 It may increase the fitness of a bacterium, provided there are at least
-$<CooperationEffectThreshold>$ bacteria (possibly, but not
+$[CooperationEffectThreshold]$ bacteria (possibly, but not
 necessarily, including itself) expressing the public goods as well within its
 3x3-cell neighbourhood;
-$<CooperationEffectThreshold>$ is the quorum threshold of cooperation.
+$[CooperationEffectThreshold]$ is the quorum threshold of cooperation.
 An individual can only obtain a fitness benefit from cooperative behaviour in
 its neighbourhood if at least
-$<CooperationEffectThreshold>$ cooperators are present in that neighbourhood. On the other
+$[CooperationEffectThreshold]$ cooperators are present in that neighbourhood. On the other
 hand, cooperation carries a fitness cost which is always paid by the
 cooperator whether or not it enjoys the benefits of cooperation.
 The cost of cooperation is the metabolic burden associated with
@@ -136,13 +136,13 @@ Individuals compete for sites.
 Competition is played out between randomly chosen pairs of neighbouring cells,
 on the basis of their fitness:
 
-$Fitness = <BasalCost>/((<CooperationCost> + <SignalCost> + <ReceptorCost>)*(1 - <PublicGoodsEffect>))>$
+$Fitness = [BasalCost]/(([CooperationCost] + [SignalCost] + [ReceptorCost])*(1 - [PublicGoodsEffect]))]$
 
-If the cell produces public goods, $<CooperationCost>$ will be equal to 1,
+If the cell produces public goods, $[CooperationCost]$ will be equal to 1,
 otherwise it’ll be equal to the cost of producing public goods.
 If there are a sufficient number of cooperators around the cell,
-$<PublicGoodsEffect>$ will equal the public goods effect, from 0 to 1, where
-bigger is better for the competitor, otherwise $<PublicGoodsEffect>$ will be 0.
+$[PublicGoodsEffect]$ will equal the public goods effect, from 0 to 1, where
+bigger is better for the competitor, otherwise $[PublicGoodsEffect]$ will be 0.
 
 Each of the competitor's Fitness is multiplied by a different uniform random
 number between 0 and 1, and the result is compared.
@@ -164,28 +164,28 @@ be mutated without changing the response module R at the same time.
 
 ### Diffusion
 
-Each competition step may be followed by a number $<D>$ of diffusion steps.
+Each competition step may be followed by a number $[D]$ of diffusion steps.
 One diffusion step consists of the random choice of a site, and the 90 degree
 rotation of the 2x2 subgrid with the randomly chosen site in its upper left
 corner.
 Rotation occurs in clockwise or anticlockwise direction with equal probability.
-$<D>$ is the diffusion parameter of the model:
+$[D]$ is the diffusion parameter of the model:
 it is proportional to the average number of diffusion steps taken by a cell per
 each competitive interaction it is engaged in.
 Larger D means faster mixing in the population.
-Since one diffusion move involves 4 cells, $<D=1.0>$ amounts to an expected
+Since one diffusion move involves 4 cells, $[D=1.0]$ amounts to an expected
 number of 4 diffusion steps per interaction per cell.
 
 ### Initial states and output
 
-At $<t=0>$ the lattice is “seeded” by the first pherotype $<S_{1}R_{1}>$.
+At $[t=0]$ the lattice is “seeded” by the first pherotype $[S_{1}R_{1}]$.
 We simulate pairwise competitive interactions, mutations and diffusive
 movements for N generations.
 One generation consists of a number of competition steps equal to the number of
 sites in the lattice, so that each site is updated once per generation on
 average.
-We have applied mutation rates of $<10^{-4}>$ both ways at each locus, which is
-equivalent to an average of $<BoardSize^{2}*10^{-4}=9>$ mutation events per
+We have applied mutation rates of $[10^{-4}]$ both ways at each locus, which is
+equivalent to an average of $[BoardSize^{2}*10^{-4}=9]$ mutation events per
 generation for each locus within the whole habitat.
 
 ### Simulations
@@ -194,11 +194,11 @@ With the initial conditions specified above we follow the evolution (the change
 in allele frequencies) of the two loci.
 We investigate the qualitative or quantitative effects on the evolution of
 quorum sensing of the crucial parameters of the model:
-the metabolic cost of cooperation $<CooperationCost>$,
-the intensity of diffusive mixing $<D>$,
+the metabolic cost of cooperation $[CooperationCost]$,
+the intensity of diffusive mixing $[D]$,
 the threshold of PG needed for the cooperation fitness effect
-$<CooperationEffectThreshold>$
-and the threshold of signal needed to produce public goods $<SignalThreshold>$.
+$[CooperationEffectThreshold]$
+and the threshold of signal needed to produce public goods $[SignalThreshold]$.
 The simulations have been run for 2000 generations.
 During the simulations we record and plot the time series of the 4 different
 genotype frequencies, from which the frequencies of the two functional alleles
@@ -207,33 +207,33 @@ We've also repeated each simulation with a different RNG (random number generato
 The strain frequency plots are available in the addenum.
 
 
-[eldar fig 1 a b]: <images/eldar-fig-1--QS-explanation.jpg>
+[eldar fig 1 a b]: [images/eldar-fig-1--QS-explanation.jpg]
 
 ## Results
 
-### Strain frequency figure $<CooperationCost>=10$
+### Strain frequency figure $[CooperationCost]=10$
 
-A hundred simulations, each with a different $<SignalThreshold>$ (changes vertically) and $<CooperationEffectThreshold>$ (changes horizontally).
+A hundred simulations, each with a different $[SignalThreshold]$ (changes vertically) and $[CooperationEffectThreshold]$ (changes horizontally).
 Within each square the vertical axis denotes quantity of cells of each strain and the horizontal denotes generation.
 Each colour represents a different strain: blue=S1R1, red=S1R2, orange=S2R2 and green=S2R1.
 
 
-$<Diffusion>$ | $<CooperationCost>$ | $<CooperationEffectThreshold>$ | $<SignalThreshold>$ | $Description$
+$[Diffusion]$ | $[CooperationCost]$ | $[CooperationEffectThreshold]$ | $[SignalThreshold]$ | $Description$
 :------------ |:------------------- |:-----------------------------  |:------------------- |:------------
 0             | 10                  | 5                              | 5                   | An equilibrium is reached between S1R1 and S2R2 at about generation 1200 with almost no cheating intermediate strains. At generation 270 we see the start of a persistent S2R2 population.
 0             | 10                  | 1                              | 6                   | A case of rock-paper-scissors (RPS) appears in which the dominance of the S1R1 is replaced by S1R2, S1R2 is replaced by S2R2, S2R2 by S2R1 and back again to S1R1. After one cycle of such replacements, the dominant populations are of the cheating strains and a smaller population of the cooperators exists, while the game of RPS is kept throughout the generations.
 0             | 10                  | 1                              | 7                   | The same as in (1,6), but after the first complete cycle of RPS the dominant populations are of the cooperating strains.
 0             | 10                  | 3                              | 8                   | An equilibrium is quickly achieved between the original cooperator (S1R1) and its cheater (S1R2). The board snapshots show high population heterogeneity. but we can see for a few generations (380 to 570) that S2R2 invaded an S1R2 population unsuccessfully and went extinct. (The invading S2R2 population had a strong advantage over the S1R2 population, but because of the overall board's structure of many discontinuous islands, the S2R2 population did not have a way to the other S1R2 populations and died off due to its small size with !!!!)
 0             | 30                  | 5                              | 5                   | An equilibrium between the two cooperating strains is achieved much faster. For a short duration at the first part of the simulation a population of cheaters to the original strain invades and went extinct.
-0             | 30                  | 1                              | 6                   | The RPS cycling appears but, conrary to the simulation of the same thresholds but with $<CooperationCost>=10$, within the first complete cycle the dominance of the cheating strain pair (S1R2, S2R1) is achieved.
+0             | 30                  | 1                              | 6                   | The RPS cycling appears but, conrary to the simulation of the same thresholds but with $[CooperationCost]=10$, within the first complete cycle the dominance of the cheating strain pair (S1R2, S2R1) is achieved.
 0             | 30                  | 1                              | 7                   | The same as the previous simulation.
 0             | 30                  | 3                              | 9                   | The first cooperating population is quickly invaded by its cheater. The change of population densities seem to be leading to an equilibrium between each of the cheating and each of the cooperating strain pairs with the cheating on the upper hand.
 0.2           | !!!                 | 5                              | 5                   | An equilibrium between the two cooperating strains is achieved much faster. For a short duration at the first part of the simulation a population of cheaters to the original strain invades and went extinct.
-0.2           | !!!                 | 1                              | 6                   | The RPS cycling appears but, conrary to the simulation of the same thresholds but with $<CooperationCost>=10$, within the first complete cycle the dominance of the cheating strain pair (S1R2, S2R1) is achieved.
+0.2           | !!!                 | 1                              | 6                   | The RPS cycling appears but, conrary to the simulation of the same thresholds but with $[CooperationCost]=10$, within the first complete cycle the dominance of the cheating strain pair (S1R2, S2R1) is achieved.
 0.2           | !!!                 | 1                              | 7                   | The same as the previous simulation.
 0.2           | !!!                 | 3                              | 9                   | The first cooperating population is quickly invaded by its cheater. The change of population densities seem to be leading to an equilibrium between each of the cheating and each of the cooperating strain pairs with the cheating on the upper hand.
 0.4           | !!!                 | 5                              | 5                   | An equilibrium between the two cooperating strains is achieved much faster. For a short duration at the first part of the simulation a population of cheaters to the original strain invades and went extinct.
-0.4           | !!!                 | 1                              | 6                   | The RPS cycling appears but, conrary to the simulation of the same thresholds but with $<CooperationCost>=10$, within the first complete cycle the dominance of the cheating strain pair (S1R2, S2R1) is achieved.
+0.4           | !!!                 | 1                              | 6                   | The RPS cycling appears but, conrary to the simulation of the same thresholds but with $[CooperationCost]=10$, within the first complete cycle the dominance of the cheating strain pair (S1R2, S2R1) is achieved.
 0.4           | !!!                 | 1                              | 7                   | The same as the previous simulation.
 0.4           | !!!                 | 3                              | 9                   | The first cooperating population is quickly invaded by its cheater. The change of population densities seem to be leading to an equilibrium between each of the cheating and each of the cooperating strain pairs with the cheating on the upper hand.
 
